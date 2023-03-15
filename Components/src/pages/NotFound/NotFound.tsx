@@ -1,12 +1,17 @@
 import { Link } from 'react-router-dom';
+import './style.scss';
 
 export const NotFound = () => {
   return (
-    <div>
-      <h1>Page not found</h1>
-      <p>
-        Go to the <Link to="/">Homepage</Link>
+    <section className="notfound">
+      <h1 className="notfound__title">404</h1>
+      <h3 className="notfound__subtitle">Page not found</h3>
+      <p className="notfound__text">
+        Go to the{' '}
+        <Link className="notfound__link" to="/">
+          Homepage
+        </Link>
       </p>
-    </div>
+    </section>
   );
 };
