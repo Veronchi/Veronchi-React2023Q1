@@ -1,0 +1,126 @@
+@import '../../styles/palette.scss';
+
+.product {
+  position: relative;
+
+  &__img {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  &__rating {
+    position: relative;
+    width: 55px;
+    height: 24px;
+    background-color: $primary;
+    text-align: right;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+    padding: 4px 8px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 8px;
+      width: 16px;
+      height: 16px;
+      background-repeat: no-repeat;
+      background-image: url('../../assets/icons/star.svg');
+    }
+  }
+
+  &__like {
+    position: relative;
+    width: 20px;
+    height: 18px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 22px;
+      height: 20px;
+      background-repeat: no-repeat;
+      background-image: url('../../assets/icons/empty-heart.svg');
+    }
+
+    &.fill {
+      &::after {
+        background-image: url('../../assets/icons/fill-heart.svg');
+      }
+    }
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    margin: 0;
+    margin-bottom: 4px;
+  }
+
+  &__desc {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: $gray;
+    margin: 0;
+    margin-bottom: 16px;
+  }
+
+  &__old-price {
+    text-decoration: line-through;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    color: $gray;
+  }
+
+  &__new-price {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    color: $pink;
+  }
+
+  &__btn {
+    width: 100%;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    color: $primary;
+    background-color: $primary-dark;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 8px 0;
+
+    &:hover {
+      background-color: $pink;
+    }
+  }
+}
+
+.info-wrapper {
+  position: absolute;
+  bottom: 195px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 16px;
+}
+
+.price-wrapper {
+  display: flex;
+  justify-content: start;
+  gap: 8px;
+  margin-bottom: 16px;
+}
