@@ -1,18 +1,30 @@
 import { Component } from 'react';
-import { Product } from 'utils/interfaces';
+import { CardState, Product } from 'utils/interfaces';
 import './style.scss';
 
-export class Card extends Component<Product> {
+export class Card extends Component<Product, CardState> {
+  constructor(props: Product) {
+    super(props);
+    this.state = {
+      isLiked: this.props.isLiked,
+    };
+  }
+
+  handleClick() {
+    this.setState({ isLiked: !this.state.isLiked });
+  }
+
   render() {
-    const { title, img, rating, description, oldPrice, newPrice, isLiked } = this.props;
+    const { title, img, rating, description, oldPrice, newPrice } = this.props;
     return (
       <li className="product">
         <img className="product__img" src={img} alt="product image" />
         <div className="info-wrapper">
           <span className="product__rating">{rating}</span>
           <button
-            className={isLiked ? 'product__like fill' : 'product__like'}
+            className={this.state.isLiked ? 'product__like fill' : 'product__like'}
             type="button"
+            onClick={() => this.handleClick()}
           ></button>
         </div>
         <h3 className="product__title">{title}</h3>

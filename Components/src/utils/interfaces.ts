@@ -4,6 +4,10 @@ export interface SearchValue {
   value: string;
 }
 
+export interface CardState {
+  isLiked: boolean;
+}
+
 export interface Product {
   id: string;
   title: string;
