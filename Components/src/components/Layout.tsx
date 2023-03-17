@@ -1,14 +1,17 @@
+import { Component, ReactNode } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Footer, Header } from '.';
 
-export const Layout = (): JSX.Element => {
-  return (
-    <div className="container">
-      <Header />
-
-      <Outlet />
-
-      <Footer />
-    </div>
-  );
-};
+export class Layout extends Component {
+  render(): ReactNode {
+    return (
+      <div className="container">
+        <Header />
+        <main>
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+}

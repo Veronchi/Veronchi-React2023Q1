@@ -1,14 +1,9 @@
 @import '../../styles/palette.scss';
 
 .about {
-  flex: 1 0 auto;
-  padding: 0 56px;
-
-  &__content {
-    max-width: 620px;
-    margin: 0 auto;
-    padding-top: 30px;
-  }
+  max-width: 620px;
+  margin: 0 auto;
+  padding-top: 30px;
 
   &__title {
     text-align: center;
