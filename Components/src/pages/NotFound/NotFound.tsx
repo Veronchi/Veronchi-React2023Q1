@@ -5,7 +5,7 @@ import './style.scss';
 export class NotFound extends Component {
   render() {
     return (
-      <section className="notfound">
+      <section className="notfound" data-testid="notfound">
         <h1 className="notfound__title">404</h1>
         <h3 className="notfound__subtitle">Page not found</h3>
         <p className="notfound__text">
