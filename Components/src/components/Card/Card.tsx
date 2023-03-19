@@ -17,7 +17,7 @@ export class Card extends Component<Product, CardState> {
   render() {
     const { title, img, rating, description, oldPrice, newPrice } = this.props;
     return (
-      <li className="product">
+      <li className="product" role="product">
         <img className="product__img" src={img} alt="product image" />
         <div className="info-wrapper">
           <span className="product__rating">{rating}</span>
