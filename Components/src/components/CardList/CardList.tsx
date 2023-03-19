@@ -6,7 +6,7 @@ import './style.scss';
 export class CardList extends Component {
   render() {
     return (
-      <ul className="products">
+      <ul className="products" data-testid="products-list">
         {products.map((item) => (
           <Card key={item.id} {...item} />
         ))}
