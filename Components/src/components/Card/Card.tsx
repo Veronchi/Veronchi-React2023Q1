@@ -23,6 +23,7 @@ export class Card extends Component<Product, CardState> {
           <span className="product__rating">{rating}</span>
           <button
             className={this.state.isLiked ? 'product__like fill' : 'product__like'}
+            data-testid="like"
             type="button"
             onClick={() => this.handleClick()}
           ></button>
