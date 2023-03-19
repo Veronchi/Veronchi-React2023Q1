@@ -12,8 +12,8 @@ export interface Product {
   id: string;
   title: string;
   description: string;
-  oldPrice: number | undefined;
-  newPrice: number;
+  oldPrice: string | undefined;
+  newPrice: string;
   rating: string;
   isLiked: boolean;
   img: string;
