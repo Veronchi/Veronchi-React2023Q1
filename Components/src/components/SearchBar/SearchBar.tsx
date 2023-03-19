@@ -6,7 +6,7 @@ export class SearchBar extends Component<SearchProps, SearchValue> {
   constructor(props: SearchProps) {
     super(props);
     this.state = {
-      value: '',
+      value: localStorage.getItem('inputValue') || '',
     };
   }
 
