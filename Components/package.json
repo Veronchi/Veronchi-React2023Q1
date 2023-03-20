@@ -7,8 +7,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "lint": "prettier --check .",
-    "format": "prettier --write .",
+    "lint": "eslint --ext .ts,.tsx src",
+    "format": "eslint --ext .ts,.tsx src --fix",
     "test": "vitest",
     "coverage": "vitest run --coverage"
   },
