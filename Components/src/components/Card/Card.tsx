@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { CardState, Product } from 'utils/interfaces';
+import { CardState, Product } from '@/utils/interfaces';
 import './style.scss';
 
 export class Card extends Component<Product, CardState> {

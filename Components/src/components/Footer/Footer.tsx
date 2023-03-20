@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import rssIcon from '../../assets/icons/rs_school_js.svg';
+import rssIcon from '@/assets/icons/rs_school_js.svg';
 import './style.scss';
 
 export class Footer extends Component {

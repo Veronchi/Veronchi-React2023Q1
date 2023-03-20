@@ -1,5 +1,5 @@
-import { CardList, SearchBar } from '../../components/index';
 import { Component } from 'react';
+import { CardList, SearchBar } from '@/components';
 import './style.scss';
 
 export class MainPage extends Component {

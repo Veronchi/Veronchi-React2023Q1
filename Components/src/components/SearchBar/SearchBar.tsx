@@ -1,5 +1,5 @@
 import { ChangeEvent, Component } from 'react';
-import { SearchProps, SearchValue } from 'utils/interfaces';
+import { SearchProps, SearchValue } from '@/utils/interfaces';
 import './style.scss';
 
 export class SearchBar extends Component<SearchProps, SearchValue> {
