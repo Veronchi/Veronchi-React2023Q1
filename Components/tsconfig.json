@@ -2,11 +2,7 @@
   "compilerOptions": {
     "target": "ESNext",
     "useDefineForClassFields": true,
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ESNext"
-    ],
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": true,
     "skipLibCheck": true,
     "noImplicitAny": true,
@@ -21,13 +17,9 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "baseUrl": "./src",
+    "baseUrl": "./src"
   },
-  "include": [
-    "src/**/*",
-    "styled.d.ts",
-    "./test/setup.ts"
-  ],
+  "include": ["src/**/*", "styled.d.ts", "./test/setup.ts"],
   "references": [
     {
       "path": "./tsconfig.node.json"
