@@ -5,7 +5,6 @@ import { CardList } from './CardList/CardList';
 import { Card } from './Card/Card';
 import { Layout } from './Layout';
 import { Form } from './Form/Form';
-import { CategoryInput } from './inputs/CategoryInput/CategoryInput';
 import { CheckInput } from './inputs/CheckInput/CheckInput';
 import { SelectInput } from './inputs/SelectInput/SelectInput';
 import { DescInput } from './inputs/DescInput/DescInput';
@@ -24,7 +23,6 @@ export {
   CardList,
   Card,
   Form,
-  CategoryInput,
   CheckInput,
   SelectInput,
   DescInput,
