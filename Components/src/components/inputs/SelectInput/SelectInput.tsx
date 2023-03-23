@@ -1,13 +1,14 @@
 import { Component } from 'react';
 import { InputState, SelectProps } from '@/utils/interfaces';
+import { ErrorMessage, ErrorTypes } from '@/utils/enums';
 
 export class SelectInput extends Component<SelectProps, InputState> {
   render() {
-    const { forwardRef } = this.props;
+    const { forwardRef, errors } = this.props;
     return (
       <div className="form__input">
         <label htmlFor="category">Category: </label>
-        <select name="category" ref={forwardRef} required>
+        <select name="category" ref={forwardRef}>
           <option defaultValue="" hidden>
             Select category
           </option>
@@ -19,6 +20,9 @@ export class SelectInput extends Component<SelectProps, InputState> {
           <option defaultValue="Jumpsuit">Jumpsuit</option>
           <option defaultValue="Socks">Socks</option>
         </select>
+        <span className="error-message">
+          {errors.includes(ErrorTypes.CHOOSE_SELECT) && ErrorMessage.SELECT}
+        </span>
       </div>
     );
   }

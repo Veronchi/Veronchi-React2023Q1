@@ -10,6 +10,7 @@ import {
   SelectInput,
   TitleInput,
 } from '../index';
+import { validateSelect } from '@/validation/validation';
 import './style.scss';
 
 export class Form extends Component<FormProps, FormState> {
@@ -17,6 +18,9 @@ export class Form extends Component<FormProps, FormState> {
 
   constructor(props: FormProps) {
     super(props);
+    this.state = {
+      errors: [],
+    };
     this.refObj = {
       form: createRef(),
       title: createRef(),
@@ -31,12 +35,27 @@ export class Form extends Component<FormProps, FormState> {
     };
   }
 
+  checkValid = (): void => {
+    const { category } = this.refObj;
+    const selectError = validateSelect(category.current?.value as string);
+
+    if (selectError) {
+      this.setState({ errors: [...this.state.errors, selectError] });
+    }
+  };
+
   handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    const file = this.refObj.img.current?.files?.[0] as Blob;
-    const fileObj = URL.createObjectURL(file);
 
-    console.log(fileObj);
+    this.checkValid();
+    // const file = this.refObj.img.current?.files?.[0] as Blob;
+    // const fileObj = URL.createObjectURL(file);
+
+    // const { category } = this.refObj;
+    // this.checkValid(category.current?.value as string);
+
+    // const isValidSelect = validateSelect(category.current?.value as string);
+    // console.log(isValidSelect);
 
     // console.log(this.refObj.title.current?.value);
     // console.log(this.refObj.description.current?.value);
@@ -67,7 +86,7 @@ export class Form extends Component<FormProps, FormState> {
       <form className="form" ref={form} onSubmit={(e) => this.handleSubmit(e)}>
         <TitleInput forwardRef={title} />
         <DescInput forwardRef={description} />
-        <SelectInput forwardRef={category} />
+        <SelectInput forwardRef={category} errors={this.state.errors} />
         <PriceInput forwardRef={price} />
         <RadioInput forwardRef={{ forMen: forMen, forWomen: forWomen }} />
         <DateInput forwardRef={collection} />
