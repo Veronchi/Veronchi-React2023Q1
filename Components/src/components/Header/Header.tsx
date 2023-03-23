@@ -27,6 +27,14 @@ export class Header extends Component {
           >
             About
           </NavLink>
+          <NavLink
+            className={({ isActive, isPending }) =>
+              isPending ? 'header__link pending' : isActive ? 'header__link active' : 'header__link'
+            }
+            to="/form"
+          >
+            Form
+          </NavLink>
         </nav>
       </header>
     );
