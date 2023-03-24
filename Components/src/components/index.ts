@@ -13,6 +13,8 @@ import { PriceInput } from './inputs/PriceInput/PriceInput';
 import { RadioInput } from './inputs/RadioInput/RadioInput';
 import { TitleInput } from './inputs/TitleInput/TitleInput';
 import { DateInput } from './inputs/DateInput/DateInput';
+import { FormList } from './FormList/FormList';
+import { FormItem } from './FormItem/FormItem';
 
 export {
   TitleInput,
@@ -30,4 +32,6 @@ export {
   PriceInput,
   RadioInput,
   DateInput,
+  FormList,
+  FormItem,
 };

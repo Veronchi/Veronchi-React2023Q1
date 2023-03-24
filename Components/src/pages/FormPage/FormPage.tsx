@@ -1,6 +1,7 @@
+import React from 'react';
 import { Component } from 'react';
-import { Form } from '@/components';
-import { FormItem, FormPageProps, FormPageState } from '@/utils/interfaces';
+import { Form, FormList } from '@/components';
+import { FormItemInteface, FormPageProps, FormPageState } from '@/utils/interfaces';
 import './style.scss';
 
 export class FormPage extends Component<FormPageProps, FormPageState> {
@@ -11,7 +12,7 @@ export class FormPage extends Component<FormPageProps, FormPageState> {
     };
   }
 
-  addItem = (item: FormItem): void => {
+  addItem = (item: FormItemInteface): void => {
     const { items } = this.state;
     this.setState({ items: [...items, item] });
   };
@@ -21,6 +22,7 @@ export class FormPage extends Component<FormPageProps, FormPageState> {
       <section className="form-page">
         <h1 className="form-page__title">Form Page</h1>
         <Form addItem={this.addItem} />
+        <FormList items={this.state.items} />
       </section>
     );
   }
