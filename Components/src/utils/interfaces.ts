@@ -21,14 +21,14 @@ export interface Product {
   img: string;
 }
 
-export interface FormItem {
+export interface FormItemInteface {
   id?: number;
   title: string;
   description: string;
   price: string;
   category: string;
   collection: string;
-  forWhom: boolean;
+  forWhom: string;
   isFavorite: boolean;
   img: string;
 }
@@ -36,11 +36,11 @@ export interface FormItem {
 export type FormPageProps = Record<string, never>;
 
 export interface FormPageState {
-  items: FormItem[];
+  items: FormItemInteface[];
 }
 
 export interface FormProps {
-  addItem: (item: FormItem) => void;
+  addItem: (item: FormItemInteface) => void;
 }
 
 export interface FormState {
@@ -88,3 +88,9 @@ export type InputData = string;
 export type RadioData = { men: boolean; women: boolean };
 
 export type FileInput = FileList;
+
+export interface FormListProps {
+  items: FormItemInteface[];
+}
+
+export type FormItemProps = FormItemInteface;
