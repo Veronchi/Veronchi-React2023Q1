@@ -1,4 +1,4 @@
-import { forwardRef, RefObject } from 'react';
+import { RefObject } from 'react';
 
 export type SearchProps = Record<string, never>;
 
@@ -26,8 +26,9 @@ export interface FormItem {
   title: string;
   description: string;
   price: string;
+  category: string;
   collection: string;
-  forWhom: string;
+  forWhom: boolean;
   isFavorite: boolean;
   img: string;
 }
@@ -43,8 +44,8 @@ export interface FormProps {
 }
 
 export interface FormState {
-  isValid: boolean;
-  isSucceed: boolean;
+  errors: Array<string>;
+  // isSucceed: boolean;
 }
 
 export interface FormRefs {
@@ -63,17 +64,27 @@ export interface FormRefs {
 export type InputState = Record<string, never>;
 
 export interface InputProps {
+  errors: Array<string>;
   forwardRef: RefObject<HTMLInputElement>;
 }
 
 export interface TextAreaProps {
+  errors: Array<string>;
   forwardRef: RefObject<HTMLTextAreaElement>;
 }
 
 export interface SelectProps {
   forwardRef: RefObject<HTMLSelectElement>;
+  errors: Array<string>;
 }
 
 export interface RadioProps {
   forwardRef: { forMen: RefObject<HTMLInputElement>; forWomen: RefObject<HTMLInputElement> };
+  errors: Array<string>;
 }
+
+export type InputData = string;
+
+export type RadioData = { men: boolean; women: boolean };
+
+export type FileInput = FileList;

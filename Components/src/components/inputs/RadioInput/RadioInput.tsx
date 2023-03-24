@@ -1,9 +1,10 @@
 import { Component } from 'react';
 import { InputState, RadioProps } from '@/utils/interfaces';
+import { ErrorMessage, ErrorTypes } from '@/utils/enums';
 
 export class RadioInput extends Component<RadioProps, InputState> {
   render() {
-    const { forwardRef } = this.props;
+    const { forwardRef, errors } = this.props;
 
     return (
       <div className="form__input">
@@ -14,7 +15,6 @@ export class RadioInput extends Component<RadioProps, InputState> {
           ref={forwardRef.forMen}
           defaultChecked={false}
           id="men"
-          required
         />
         <label htmlFor="men">Men</label>
         <input
@@ -23,9 +23,11 @@ export class RadioInput extends Component<RadioProps, InputState> {
           ref={forwardRef.forWomen}
           defaultChecked={false}
           id="women"
-          required
         />
         <label htmlFor="women">Women</label>
+        <span className="error-message">
+          {errors.includes(ErrorTypes.RADIO) && ErrorMessage.RADIO}
+        </span>
       </div>
     );
   }

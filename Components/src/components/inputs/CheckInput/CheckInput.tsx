@@ -8,7 +8,7 @@ export class CheckInput extends Component<InputProps, InputState> {
     return (
       <div className="form__input">
         <label htmlFor="agree">Add to favorite?</label>
-        <input type="checkbox" ref={forwardRef} defaultChecked={false} required name="agree" />
+        <input type="checkbox" ref={forwardRef} defaultChecked={false} name="agree" />
       </div>
     );
   }
