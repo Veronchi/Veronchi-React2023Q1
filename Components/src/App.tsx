@@ -10,7 +10,7 @@ const App = (): JSX.Element => (
       <Route path={Paths.HOME} element={<MainPage />} />
       <Route index element={<Navigate to={Paths.HOME} replace />} />
       <Route path={Paths.ABOUT} element={<About />} />
-      <Route path={Paths.ERROR} element={<FormPage />} />
+      <Route path={Paths.FORM} element={<FormPage />} />
     </Route>
 
     <Route path={Paths.ERROR} element={<NotFound />} />
