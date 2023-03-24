@@ -77,15 +77,14 @@ export class Form extends Component<FormProps, FormState> {
 
   handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    const { title, category, description, price, collection, forMen, forWomen, isFavorite, img } =
+    const { form, title, category, description, price, collection, forWomen, isFavorite, img } =
       this.refObj;
     const titleStr = title.current?.value as string;
     const categoryStr = category.current?.value as string;
     const descriptionStr = description.current?.value as string;
     const priceStr = price.current?.value as string;
     const collectionStr = collection.current?.value as string;
-    const radio = forMen || forWomen;
-    const forWhom = radio.current?.checked as boolean;
+    const forWhom = forWomen.current?.checked ? 'women' : 'men';
     const checkbox = isFavorite.current?.checked as boolean;
 
     this.checkValid().then((isValid: boolean) => {
@@ -103,6 +102,8 @@ export class Form extends Component<FormProps, FormState> {
           img: imgFile,
           isFavorite: checkbox,
         });
+
+        form.current?.reset();
       }
     });
   };
