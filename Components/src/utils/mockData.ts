@@ -1,4 +1,4 @@
-import { Product } from './interfaces';
+import { FormItemInteface, Product } from './interfaces';
 import item1 from '../assets/img/vero-moda-sweater.png';
 import item2 from '../assets/img/forever-21-sweater.png';
 import item3 from '../assets/img/HnM-jeans.png';
@@ -134,3 +134,16 @@ export const products: Product[] = [
     img: item12,
   },
 ];
+
+export const mockFormItem = (): FormItemInteface => {
+  return {
+    title: 'HnM',
+    description: 'Wide-leg TRF Jeans',
+    price: '1234',
+    category: 'Jeans',
+    collection: '2023-03-24',
+    favorite: 'yes',
+    stock: true,
+    img: item1,
+  };
+};

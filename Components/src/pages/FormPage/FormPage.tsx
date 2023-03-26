@@ -19,7 +19,7 @@ export class FormPage extends Component<FormPageProps, FormPageState> {
 
   render() {
     return (
-      <section className="form-page">
+      <section className="form-page" data-testid="form-page">
         <h1 className="form-page__title">Form Page</h1>
         <Form addItem={this.addItem} />
         <FormList items={this.state.items} />

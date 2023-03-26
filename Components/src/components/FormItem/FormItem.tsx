@@ -35,7 +35,7 @@ export class FormItem extends Component<FormItemProps> {
   render() {
     const { title, description, price, category, favorite, stock, img } = this.props;
     return (
-      <li className="product">
+      <li className="product" data-testid="form-item">
         <img src={img} className="product__img product__img_form" alt="item image" />
         <div className="info-wrapper">
           <span
