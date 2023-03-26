@@ -5,6 +5,7 @@ import {
   DateInput,
   DescInput,
   FileInput,
+  Modal,
   PriceInput,
   RadioInput,
   SelectInput,
@@ -18,7 +19,7 @@ import {
   validateRadio,
   validateSelect,
   validateTitle,
-} from '@/validation/validation';
+} from '@/validation';
 import './style.scss';
 
 export class Form extends Component<FormProps, FormState> {
@@ -28,6 +29,7 @@ export class Form extends Component<FormProps, FormState> {
     super(props);
     this.state = {
       errors: [],
+      isSucceed: false,
     };
     this.refObj = {
       form: createRef(),
@@ -51,8 +53,8 @@ export class Form extends Component<FormProps, FormState> {
     const priceError = validatePrice(price.current?.value as string);
     const dateError = validateDate(collection.current?.value as string);
     const radioError = validateRadio({
-      men: favYes.current?.checked as boolean,
-      women: favNo.current?.checked as boolean,
+      yes: favYes.current?.checked as boolean,
+      no: favNo.current?.checked as boolean,
     });
     const fileError = validateFile(img.current?.files as FileList);
 
@@ -102,8 +104,12 @@ export class Form extends Component<FormProps, FormState> {
           img: imgFile,
           stock: checkbox,
         });
+        this.setState({ isSucceed: true });
 
-        form.current?.reset();
+        setTimeout(() => {
+          this.setState({ isSucceed: false });
+          form.current?.reset();
+        }, 1000);
       }
     });
   };
@@ -113,28 +119,26 @@ export class Form extends Component<FormProps, FormState> {
       this.refObj;
 
     return (
-      <form className="form" ref={form} noValidate onSubmit={(e) => this.handleSubmit(e)}>
-        <div className="wrapper">
-          <SelectInput forwardRef={category} errors={this.state.errors} />
-          <DateInput forwardRef={collection} errors={this.state.errors} />
-        </div>
-
-        <div className="wrapper">
-          <TitleInput forwardRef={title} errors={this.state.errors} />
-          <PriceInput forwardRef={price} errors={this.state.errors} />
-        </div>
-
-        <DescInput forwardRef={description} errors={this.state.errors} />
-
-        <div className="wrapper">
-          <RadioInput forwardRef={{ favYes, favNo }} errors={this.state.errors} />
-          <CheckInput forwardRef={stock} errors={this.state.errors} />
-        </div>
-
-        <FileInput forwardRef={img} errors={this.state.errors} />
-
-        <input className="form__submit" type="submit" />
-      </form>
+      <div className="form-container">
+        <form className="form" ref={form} noValidate onSubmit={(e) => this.handleSubmit(e)}>
+          <div className="wrapper">
+            <SelectInput forwardRef={category} errors={this.state.errors} />
+            <DateInput forwardRef={collection} errors={this.state.errors} />
+          </div>
+          <div className="wrapper">
+            <TitleInput forwardRef={title} errors={this.state.errors} />
+            <PriceInput forwardRef={price} errors={this.state.errors} />
+          </div>
+          <DescInput forwardRef={description} errors={this.state.errors} />
+          <div className="wrapper">
+            <RadioInput forwardRef={{ favYes, favNo }} errors={this.state.errors} />
+            <CheckInput forwardRef={stock} errors={this.state.errors} />
+          </div>
+          <FileInput forwardRef={img} errors={this.state.errors} />
+          <input className="form__submit" type="submit" />
+        </form>
+        {this.state.isSucceed && <Modal />}
+      </div>
     );
   }
 }

@@ -1,0 +1,23 @@
+@import '@/styles/palette.scss';
+
+.modal {
+  position: absolute;
+  top: 9%;
+  left: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 700px;
+  height: 250px;
+  background-color: $primary;
+  border: 1px solid $pink;
+  border-radius: 5px;
+  text-align: center;
+
+  &__title {
+    font-weight: 600;
+    font-size: 23px;
+    line-height: 32px;
+    margin: 0;
+  }
+}

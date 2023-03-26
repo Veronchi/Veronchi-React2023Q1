@@ -45,7 +45,7 @@ export interface FormProps {
 
 export interface FormState {
   errors: Array<string>;
-  // isSucceed: boolean;
+  isSucceed: boolean;
 }
 
 export interface FormRefs {
@@ -85,7 +85,7 @@ export interface RadioProps {
 
 export type InputData = string;
 
-export type RadioData = { men: boolean; women: boolean };
+export type RadioData = { yes: boolean; no: boolean };
 
 export type FileInput = FileList;
 

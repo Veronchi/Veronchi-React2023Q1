@@ -1,5 +1,9 @@
 @import '@/styles/palette.scss';
 
+.form-container {
+  position: relative;
+}
+
 .form {
   display: flex;
   flex-direction: column;

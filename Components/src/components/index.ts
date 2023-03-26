@@ -15,6 +15,7 @@ import { TitleInput } from './inputs/TitleInput/TitleInput';
 import { DateInput } from './inputs/DateInput/DateInput';
 import { FormList } from './FormList/FormList';
 import { FormItem } from './FormItem/FormItem';
+import { Modal } from './Modal/Modal';
 
 export {
   TitleInput,
@@ -34,4 +35,5 @@ export {
   DateInput,
   FormList,
   FormItem,
+  Modal,
 };
