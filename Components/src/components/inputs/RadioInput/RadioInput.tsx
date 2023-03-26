@@ -13,22 +13,23 @@ export class RadioInput extends Component<RadioProps, InputState> {
         </label>
         <input
           type="radio"
-          name="isFavTrue"
+          name="radio"
           ref={forwardRef.favYes}
+          value="yes"
           defaultChecked={false}
           id="yes"
           className="form__input_radio"
         />
-        <label htmlFor="isFavTrue">Yes</label>
+        <label htmlFor="yes">Yes</label>
         <input
           type="radio"
-          name="isFavFalse"
+          name="radio"
           ref={forwardRef.favNo}
           defaultChecked={false}
           id="no"
           className="form__input_radio"
         />
-        <label htmlFor="isFavFalse">No</label>
+        <label htmlFor="no">No</label>
         <span className="error-message error-message_radio">
           {errors.includes(ErrorTypes.RADIO) && ErrorMessage.RADIO}
         </span>
