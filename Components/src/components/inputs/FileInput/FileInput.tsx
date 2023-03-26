@@ -7,18 +7,24 @@ export class FileInput extends Component<InputProps, InputState> {
     const { forwardRef, errors } = this.props;
 
     return (
-      <div className="form__input">
-        <label htmlFor="img">Click me to upload image</label>
+      <div className="form__wrapper form__wrapper_file">
+        <label className="file-label" htmlFor="img">
+          Click me to upload image
+        </label>
         <input
           type="file"
           name="img"
           id="img"
           ref={forwardRef}
           accept="image/*"
-          style={{ display: 'none' }}
+          className="file-input"
         ></input>
-        <span>{errors.includes(ErrorTypes.EMPTY_FILE) && ErrorMessage.EMPTY_FILE}</span>
-        <span>{errors.includes(ErrorTypes.FILE) && ErrorMessage.FILE}</span>
+        <span className="error-message error-message_file">
+          {errors.includes(ErrorTypes.EMPTY_FILE) && ErrorMessage.EMPTY_FILE}
+        </span>
+        <span className="error-message error-message_file">
+          {errors.includes(ErrorTypes.FILE) && ErrorMessage.FILE}
+        </span>
       </div>
     );
   }

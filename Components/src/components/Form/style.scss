@@ -1,0 +1,139 @@
+@import '@/styles/palette.scss';
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+  border: 1px solid #d2d2d2;
+  border-radius: 8px;
+  padding: 30px;
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+
+    &_radio {
+      flex-direction: row;
+      justify-content: start;
+      gap: 5px;
+    }
+
+    &_row {
+      flex-direction: row;
+      align-items: flex-end;
+      margin-bottom: 20px;
+      gap: 5px;
+    }
+
+    &_file {
+      margin-bottom: 30px;
+    }
+  }
+
+  &__input {
+    width: 300px;
+    outline-color: $pink;
+    color: $primary-dark;
+    border: 1px solid $primary-dark;
+    border-radius: 5px;
+    line-height: 30px;
+    padding-right: 10px;
+    padding-left: 3px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+
+    &_area {
+      width: 500px;
+      margin-bottom: 0;
+    }
+
+    &_select {
+      height: 34px;
+    }
+
+    &_price {
+      position: relative;
+      appearance: none;
+
+      &:hover,
+      &:focus {
+        appearance: none;
+      }
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
+    }
+  }
+
+  .wrapper {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    justify-content: start;
+    margin-bottom: 20px;
+  }
+
+  &__submit {
+    width: 300px;
+    line-height: 34px;
+    border-radius: 5px;
+    background-color: $pink;
+    border: none;
+    color: $primary;
+    cursor: pointer;
+    align-self: center;
+
+    &:hover {
+      background-color: $primary-dark;
+    }
+  }
+}
+
+.file-label {
+  display: block;
+  align-self: center;
+  width: 250px;
+  line-height: 34px;
+  border-radius: 5px;
+  background-color: $primary-dark;
+  color: $primary;
+  cursor: pointer;
+  padding: 0 20px;
+  margin-bottom: 5px;
+
+  &:hover {
+    background-color: $pink;
+  }
+}
+
+.file-input {
+  display: none;
+}
+
+.error-message {
+  color: red;
+  margin-left: 50px;
+
+  &_desc {
+    margin-left: 5px;
+  }
+
+  &_radio {
+    margin-left: 0;
+  }
+
+  &_middle {
+    margin-left: 90px;
+  }
+}
+
+.middle-wrapper {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+  justify-content: start;
+  margin-bottom: 20px;
+}

@@ -124,19 +124,29 @@ export class Form extends Component<FormProps, FormState> {
 
     return (
       <form className="form" ref={form} noValidate onSubmit={(e) => this.handleSubmit(e)}>
-        <TitleInput forwardRef={title} errors={this.state.errors} />
-        <DescInput forwardRef={description} errors={this.state.errors} />
-        <SelectInput forwardRef={category} errors={this.state.errors} />
-        <PriceInput forwardRef={price} errors={this.state.errors} />
-        <RadioInput
-          forwardRef={{ forMen: forMen, forWomen: forWomen }}
-          errors={this.state.errors}
-        />
-        <DateInput forwardRef={collection} errors={this.state.errors} />
-        <FileInput forwardRef={img} errors={this.state.errors} />
-        <CheckInput forwardRef={isFavorite} errors={this.state.errors} />
+        <div className="wrapper">
+          <SelectInput forwardRef={category} errors={this.state.errors} />
+          <DateInput forwardRef={collection} errors={this.state.errors} />
+        </div>
 
-        <input type="submit" />
+        <div className="wrapper">
+          <TitleInput forwardRef={title} errors={this.state.errors} />
+          <PriceInput forwardRef={price} errors={this.state.errors} />
+        </div>
+
+        <DescInput forwardRef={description} errors={this.state.errors} />
+
+        <div className="wrapper">
+          <RadioInput
+            forwardRef={{ forMen: forMen, forWomen: forWomen }}
+            errors={this.state.errors}
+          />
+          <CheckInput forwardRef={isFavorite} errors={this.state.errors} />
+        </div>
+
+        <FileInput forwardRef={img} errors={this.state.errors} />
+
+        <input className="form__submit" type="submit" />
       </form>
     );
   }

@@ -6,7 +6,7 @@ export class CheckInput extends Component<InputProps, InputState> {
     const { forwardRef } = this.props;
 
     return (
-      <div className="form__input">
+      <div className="form__wrapper form__wrapper_radio">
         <label htmlFor="agree">Add to favorite?</label>
         <input type="checkbox" ref={forwardRef} defaultChecked={false} name="agree" />
       </div>

@@ -7,9 +7,17 @@ export class TitleInput extends Component<InputProps, InputState> {
     const { forwardRef, errors } = this.props;
 
     return (
-      <div className="form__input">
-        <label htmlFor="title">Title: </label>
-        <input type="text" name="title" ref={forwardRef} defaultValue="" />
+      <div className="form__wrapper">
+        <label className="form__label">
+          Title:
+          <input
+            type="text"
+            name="title"
+            className="form__input"
+            ref={forwardRef}
+            defaultValue=""
+          />
+        </label>
         <span className="error-message">
           {errors.includes(ErrorTypes.EMPTY_TITLE) && ErrorMessage.EMPTY_TITLE}
         </span>
