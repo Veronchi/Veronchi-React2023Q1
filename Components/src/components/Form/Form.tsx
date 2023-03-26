@@ -36,23 +36,23 @@ export class Form extends Component<FormProps, FormState> {
       category: createRef(),
       price: createRef(),
       collection: createRef(),
-      forMen: createRef(),
-      forWomen: createRef(),
-      isFavorite: createRef(),
+      favYes: createRef(),
+      favNo: createRef(),
+      stock: createRef(),
       img: createRef(),
     };
   }
 
   checkValid = async (): Promise<boolean> => {
-    const { title, category, description, price, collection, forMen, forWomen, img } = this.refObj;
+    const { title, category, description, price, collection, favYes, favNo, img } = this.refObj;
     const titleError = validateTitle(title.current?.value as string);
     const descError = validateDesc(description.current?.value as string);
     const selectError = validateSelect(category.current?.value as string);
     const priceError = validatePrice(price.current?.value as string);
     const dateError = validateDate(collection.current?.value as string);
     const radioError = validateRadio({
-      men: forMen.current?.checked as boolean,
-      women: forWomen.current?.checked as boolean,
+      men: favYes.current?.checked as boolean,
+      women: favNo.current?.checked as boolean,
     });
     const fileError = validateFile(img.current?.files as FileList);
 
@@ -77,15 +77,15 @@ export class Form extends Component<FormProps, FormState> {
 
   handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    const { form, title, category, description, price, collection, forWomen, isFavorite, img } =
+    const { form, title, category, description, price, collection, favYes, stock, img } =
       this.refObj;
     const titleStr = title.current?.value as string;
     const categoryStr = category.current?.value as string;
     const descriptionStr = description.current?.value as string;
     const priceStr = price.current?.value as string;
     const collectionStr = collection.current?.value as string;
-    const forWhom = forWomen.current?.checked ? 'women' : 'men';
-    const checkbox = isFavorite.current?.checked as boolean;
+    const favorite = favYes.current?.checked ? 'yes' : 'no';
+    const checkbox = stock.current?.checked as boolean;
 
     this.checkValid().then((isValid: boolean) => {
       if (isValid) {
@@ -98,9 +98,9 @@ export class Form extends Component<FormProps, FormState> {
           category: categoryStr,
           price: priceStr,
           collection: collectionStr,
-          forWhom,
+          favorite,
           img: imgFile,
-          isFavorite: checkbox,
+          stock: checkbox,
         });
 
         form.current?.reset();
@@ -109,18 +109,8 @@ export class Form extends Component<FormProps, FormState> {
   };
 
   render() {
-    const {
-      form,
-      title,
-      description,
-      price,
-      category,
-      collection,
-      forMen,
-      forWomen,
-      isFavorite,
-      img,
-    } = this.refObj;
+    const { form, title, description, price, category, collection, favYes, favNo, stock, img } =
+      this.refObj;
 
     return (
       <form className="form" ref={form} noValidate onSubmit={(e) => this.handleSubmit(e)}>
@@ -137,11 +127,8 @@ export class Form extends Component<FormProps, FormState> {
         <DescInput forwardRef={description} errors={this.state.errors} />
 
         <div className="wrapper">
-          <RadioInput
-            forwardRef={{ forMen: forMen, forWomen: forWomen }}
-            errors={this.state.errors}
-          />
-          <CheckInput forwardRef={isFavorite} errors={this.state.errors} />
+          <RadioInput forwardRef={{ favYes, favNo }} errors={this.state.errors} />
+          <CheckInput forwardRef={stock} errors={this.state.errors} />
         </div>
 
         <FileInput forwardRef={img} errors={this.state.errors} />

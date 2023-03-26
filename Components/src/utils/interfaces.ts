@@ -28,8 +28,8 @@ export interface FormItemInteface {
   price: string;
   category: string;
   collection: string;
-  forWhom: string;
-  isFavorite: boolean;
+  favorite: string;
+  stock: boolean;
   img: string;
 }
 
@@ -55,9 +55,9 @@ export interface FormRefs {
   category: RefObject<HTMLSelectElement>;
   price: RefObject<HTMLInputElement>;
   collection: RefObject<HTMLInputElement>;
-  forMen: RefObject<HTMLInputElement>;
-  forWomen: RefObject<HTMLInputElement>;
-  isFavorite: RefObject<HTMLInputElement>;
+  favYes: RefObject<HTMLInputElement>;
+  favNo: RefObject<HTMLInputElement>;
+  stock: RefObject<HTMLInputElement>;
   img: RefObject<HTMLInputElement>;
 }
 
@@ -79,7 +79,7 @@ export interface SelectProps {
 }
 
 export interface RadioProps {
-  forwardRef: { forMen: RefObject<HTMLInputElement>; forWomen: RefObject<HTMLInputElement> };
+  forwardRef: { favYes: RefObject<HTMLInputElement>; favNo: RefObject<HTMLInputElement> };
   errors: Array<string>;
 }
 

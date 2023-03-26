@@ -8,27 +8,27 @@ export class RadioInput extends Component<RadioProps, InputState> {
 
     return (
       <div className="form__wrapper form__wrapper_radio">
-        <label htmlFor="forWhom" className="form__label">
-          For whom:{' '}
+        <label htmlFor="isFav" className="form__label">
+          Add to favorite:{' '}
         </label>
         <input
           type="radio"
-          name="forWhom"
-          ref={forwardRef.forMen}
+          name="isFavTrue"
+          ref={forwardRef.favYes}
           defaultChecked={false}
-          id="men"
+          id="yes"
           className="form__input_radio"
         />
-        <label htmlFor="men">Men</label>
+        <label htmlFor="isFavTrue">Yes</label>
         <input
           type="radio"
-          name="forWhom"
-          ref={forwardRef.forWomen}
+          name="isFavFalse"
+          ref={forwardRef.favNo}
           defaultChecked={false}
-          id="women"
+          id="no"
           className="form__input_radio"
         />
-        <label htmlFor="women">Women</label>
+        <label htmlFor="isFavFalse">No</label>
         <span className="error-message error-message_radio">
           {errors.includes(ErrorTypes.RADIO) && ErrorMessage.RADIO}
         </span>
