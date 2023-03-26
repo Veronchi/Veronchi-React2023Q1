@@ -20,7 +20,7 @@ export function validateDesc(inputData: InputData): string | undefined {
 export function validatePrice(inputData: InputData): string | undefined {
   if (!inputData.length) {
     return ErrorTypes.EMPTY_PRICE;
-  } else if (+inputData < 0) {
+  } else if (+inputData === 0) {
     return ErrorTypes.NEGATIVE_PRICE;
   }
 }
