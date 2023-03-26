@@ -37,8 +37,8 @@ export function validateDate(inputData: InputData): string | undefined {
   }
 }
 
-export function validateRadio({ men, women }: RadioData): string | undefined {
-  if (!(men || women)) {
+export function validateRadio({ yes, no }: RadioData): string | undefined {
+  if (!(yes || no)) {
     return ErrorTypes.RADIO;
   }
 }
