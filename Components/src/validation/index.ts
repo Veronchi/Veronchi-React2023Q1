@@ -2,7 +2,9 @@ import { ErrorTypes } from '@/utils/enums';
 import { FileInput, InputData, RadioData } from '@/utils/interfaces';
 
 export function validateTitle(inputData: InputData): string | undefined {
-  if (!inputData.length) {
+  if (inputData.trim() === '') {
+    return ErrorTypes.EMPTY_TITLE;
+  } else if (!inputData.length) {
     return ErrorTypes.EMPTY_TITLE;
   } else if (inputData.length < 2) {
     return ErrorTypes.SHORT_TITLE;
@@ -10,7 +12,9 @@ export function validateTitle(inputData: InputData): string | undefined {
 }
 
 export function validateDesc(inputData: InputData): string | undefined {
-  if (!inputData.length) {
+  if (inputData.trim() === '') {
+    return ErrorTypes.EMPTY_DESC;
+  } else if (!inputData.length) {
     return ErrorTypes.EMPTY_DESC;
   } else if (inputData.length < 5) {
     return ErrorTypes.SHORT_DESC;
