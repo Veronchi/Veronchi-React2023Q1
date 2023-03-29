@@ -1,0 +1,9 @@
+.form-list {
+  display: grid;
+  grid-template-columns: repeat(4, 250px);
+  gap: 40px 133px;
+  list-style: none;
+  margin: 0;
+  margin-bottom: 50px;
+  padding: 0;
+}

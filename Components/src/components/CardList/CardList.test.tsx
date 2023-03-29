@@ -1,6 +1,6 @@
 import { render, screen, within } from '@testing-library/react';
 import { CardList } from './CardList';
-import { products } from '../../utils/mockData';
+import { products } from '@/utils/mockData';
 
 describe('<CardList />', () => {
   let productsList: HTMLUListElement;

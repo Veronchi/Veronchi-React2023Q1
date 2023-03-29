@@ -1,18 +1,19 @@
-import { Route, Routes } from 'react-router-dom';
-import { Layout } from './components/Layout';
-import { MainPage } from './pages/MainPage/MainPage';
-import { About } from './pages/About/About';
-import { NotFound } from './pages/NotFound/NotFound';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import { Layout } from '@/components';
+import { About, MainPage, NotFound, FormPage } from '@/pages';
+import { Paths } from './utils/enums';
 import './App.scss';
 
 const App = (): JSX.Element => (
   <Routes>
-    <Route path="/" element={<Layout />}>
-      <Route index element={<MainPage />} />
-      <Route path="about-us" element={<About />} />
+    <Route path={Paths.DEFAULT} element={<Layout />}>
+      <Route path={Paths.HOME} element={<MainPage />} />
+      <Route index element={<Navigate to={Paths.HOME} replace />} />
+      <Route path={Paths.ABOUT} element={<About />} />
+      <Route path={Paths.FORM} element={<FormPage />} />
     </Route>
 
-    <Route path="*" element={<NotFound />} />
+    <Route path={Paths.ERROR} element={<NotFound />} />
   </Routes>
 );
 

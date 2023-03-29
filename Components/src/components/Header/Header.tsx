@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import logo from '../../assets/icons/Logo.svg';
+import logo from '@/assets/icons/Logo.svg';
 import './style.scss';
 
 export class Header extends Component {
@@ -26,6 +26,14 @@ export class Header extends Component {
             to="/about-us"
           >
             About
+          </NavLink>
+          <NavLink
+            className={({ isActive, isPending }) =>
+              isPending ? 'header__link pending' : isActive ? 'header__link active' : 'header__link'
+            }
+            to="/form"
+          >
+            Form
           </NavLink>
         </nav>
       </header>

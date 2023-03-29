@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { Card } from '../index';
-import { products } from '../../utils/mockData';
+import { products } from '@/utils/mockData';
 import './style.scss';
 
 export class CardList extends Component {

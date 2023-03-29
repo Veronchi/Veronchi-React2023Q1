@@ -1,0 +1,26 @@
+@import '@/styles/palette.scss';
+
+.product__img_form {
+  height: 373px;
+}
+
+.info-bottom {
+  display: flex;
+  justify-content: space-between;
+}
+
+.category {
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+.collection {
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.product__delivery {
+  color: $pink;
+  font-size: 14px;
+  line-height: 23px;
+}
