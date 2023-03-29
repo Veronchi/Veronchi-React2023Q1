@@ -1,15 +1,5 @@
 import { RefObject } from 'react';
 
-export type SearchProps = Record<string, never>;
-
-export interface SearchValue {
-  value: string;
-}
-
-export interface CardState {
-  isLiked: boolean;
-}
-
 export interface Product {
   id: string;
   title: string;
