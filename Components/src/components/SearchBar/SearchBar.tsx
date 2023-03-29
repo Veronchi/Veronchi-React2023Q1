@@ -1,40 +1,31 @@
-import { ChangeEvent, Component } from 'react';
-import { SearchProps, SearchValue } from '@/utils/interfaces';
+import { ChangeEvent, FC, useEffect, useState } from 'react';
 import './style.scss';
 
-export class SearchBar extends Component<SearchProps, SearchValue> {
-  constructor(props: SearchProps) {
-    super(props);
-    this.state = {
-      value: localStorage.getItem('inputValue') || '',
-    };
-  }
+export const SearchBar: FC = () => {
+  const [searchValue, setSearchValue] = useState('');
 
-  handleChange(e: ChangeEvent<HTMLInputElement>): void {
-    this.setState({ value: e.target.value });
-  }
+  useEffect(() => {
+    const value = localStorage.getItem('inputValue') || '';
+    setSearchValue(value);
+  }, [searchValue]);
 
-  componentDidMount(): void {
-    this.setState({ value: localStorage.getItem('inputValue') || '' });
-  }
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const inputValue = e.target.value;
+    setSearchValue(inputValue);
+    localStorage.setItem('inputValue', inputValue);
+  };
 
-  componentWillUnmount(): void {
-    localStorage.setItem('inputValue', this.state.value);
-  }
-
-  render() {
-    return (
-      <form className="search">
-        <span className="input-container">
-          <input
-            className="search__input"
-            type="text"
-            placeholder="Search"
-            value={this.state.value}
-            onChange={(e) => this.handleChange(e)}
-          />
-        </span>
-      </form>
-    );
-  }
-}
+  return (
+    <form className="search">
+      <span className="input-container">
+        <input
+          className="search__input"
+          type="text"
+          placeholder="Search"
+          value={searchValue}
+          onChange={(e) => handleChange(e)}
+        />
+      </span>
+    </form>
+  );
+};
