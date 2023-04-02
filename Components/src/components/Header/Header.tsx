@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import logo from '@/assets/icons/Logo.svg';
 import { Paths } from '@/utils/enums';
 import { HeaderClasses } from '@/utils/enums';
@@ -11,6 +11,7 @@ interface ClassProps {
 }
 
 export const Header: FC = () => {
+  const location = useLocation();
   const { LINK, PENDING, ACTIVE } = HeaderClasses;
   const { HOME, ABOUT, FORM } = Paths;
 
@@ -33,6 +34,7 @@ export const Header: FC = () => {
           Form
         </NavLink>
       </nav>
+      <span>currante page: {location.pathname.slice(1)}</span>
     </header>
   );
 };
