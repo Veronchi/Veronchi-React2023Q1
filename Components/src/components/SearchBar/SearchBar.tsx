@@ -18,7 +18,6 @@ export const SearchBar: FC = () => {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
     setSearchValue(inputValue);
-    localStorage.setItem('inputValue', inputValue);
   };
 
   return (
