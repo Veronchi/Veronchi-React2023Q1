@@ -1,29 +1,20 @@
-import React from 'react';
-import { Component } from 'react';
+import { FC, useState } from 'react';
 import { Form, FormList } from '@/components';
-import { FormItemInteface, FormPageProps, FormPageState } from '@/utils/interfaces';
+import { FormItemProps } from '@/utils/interfaces';
 import './style.scss';
 
-export class FormPage extends Component<FormPageProps, FormPageState> {
-  constructor(props: FormPageProps) {
-    super(props);
-    this.state = {
-      items: [],
-    };
-  }
+export const FormPage: FC = () => {
+  const [items, setItems] = useState<[] | Array<FormItemProps>>([]);
 
-  addItem = (item: FormItemInteface): void => {
-    const { items } = this.state;
-    this.setState({ items: [...items, item] });
+  const addItem = (item: FormItemProps): void => {
+    setItems([...items, item]);
   };
 
-  render() {
-    return (
-      <section className="form-page" data-testid="form-page">
-        <h1 className="form-page__title">Form Page</h1>
-        <Form addItem={this.addItem} />
-        <FormList items={this.state.items} />
-      </section>
-    );
-  }
-}
+  return (
+    <section className="form-page" data-testid="form-page">
+      <h1 className="form-page__title">Form Page</h1>
+      <Form addItem={addItem} />
+      <FormList items={items} />
+    </section>
+  );
+};
