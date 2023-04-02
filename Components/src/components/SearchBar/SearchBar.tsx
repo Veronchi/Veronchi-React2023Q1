@@ -1,12 +1,18 @@
-import { ChangeEvent, FC, useEffect, useState } from 'react';
+import { ChangeEvent, FC, useEffect, useRef, useState } from 'react';
 import './style.scss';
 
 export const SearchBar: FC = () => {
-  const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState(localStorage.getItem('inputValue') || '');
+  const inputRef = useRef(searchValue);
 
   useEffect(() => {
-    const value = localStorage.getItem('inputValue') || '';
-    setSearchValue(value);
+    return () => {
+      localStorage.setItem('inputValue', inputRef.current || '');
+    };
+  }, []);
+
+  useEffect(() => {
+    inputRef.current = searchValue;
   }, [searchValue]);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
