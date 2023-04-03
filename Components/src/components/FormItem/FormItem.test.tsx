@@ -16,7 +16,7 @@ describe('<FormItem />', () => {
   });
 
   it('render form item props properly', () => {
-    expect(formItem).toContainHTML(mockProps.img);
+    expect(formItem).toContainHTML(mockProps.image);
     expect(formItem).toContainHTML(mockProps.title);
     expect(formItem).toContainHTML(mockProps.description);
     expect(formItem).toContainHTML(mockProps.price);

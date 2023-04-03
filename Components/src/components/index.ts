@@ -1,39 +1,10 @@
-import { Header } from './Header/Header';
-import { Footer } from './Footer/Footer';
-import { SearchBar } from './SearchBar/SearchBar';
-import { CardList } from './CardList/CardList';
-import { Card } from './Card/Card';
-import { Layout } from './Layout';
-import { Form } from './Form/Form';
-import { CheckInput } from './inputs/CheckInput/CheckInput';
-import { SelectInput } from './inputs/SelectInput/SelectInput';
-import { DescInput } from './inputs/DescInput/DescInput';
-import { FileInput } from './inputs/FileInput/FileInput';
-import { PriceInput } from './inputs/PriceInput/PriceInput';
-import { RadioInput } from './inputs/RadioInput/RadioInput';
-import { TitleInput } from './inputs/TitleInput/TitleInput';
-import { DateInput } from './inputs/DateInput/DateInput';
-import { FormList } from './FormList/FormList';
-import { FormItem } from './FormItem/FormItem';
-import { Modal } from './Modal/Modal';
-
-export {
-  TitleInput,
-  Layout,
-  Header,
-  Footer,
-  SearchBar,
-  CardList,
-  Card,
-  Form,
-  CheckInput,
-  SelectInput,
-  DescInput,
-  FileInput,
-  PriceInput,
-  RadioInput,
-  DateInput,
-  FormList,
-  FormItem,
-  Modal,
-};
+export { Header } from './Header/Header';
+export { Footer } from './Footer/Footer';
+export { SearchBar } from './SearchBar/SearchBar';
+export { CardList } from './CardList/CardList';
+export { Card } from './Card/Card';
+export { Layout } from './Layout';
+export { Form } from './Form/Form';
+export { FormList } from './FormList/FormList';
+export { FormItem } from './FormItem/FormItem';
+export { Modal } from './Modal/Modal';
