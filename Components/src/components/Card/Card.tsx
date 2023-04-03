@@ -13,7 +13,7 @@ export const Card: FC<Product> = ({
 }) => {
   const [isLike, setIsLike] = useState(isLiked);
 
-  const handleClick = (): void => {
+  const handleClick = () => {
     setIsLike(!isLike);
   };
 
@@ -27,12 +27,12 @@ export const Card: FC<Product> = ({
           data-testid="like"
           type="button"
           onClick={handleClick}
-        ></button>
+        />
       </div>
       <h3 className="product__title">{title}</h3>
       <p className="product__desc">{description}</p>
       <div className="price-wrapper">
-        {oldPrice ? <span className="product__old-price">{oldPrice}$</span> : undefined}
+        {oldPrice && <span className="product__old-price">{oldPrice}$</span>}
         <span className="product__new-price">{newPrice}$</span>
       </div>
       <button className="product__btn" type="button">

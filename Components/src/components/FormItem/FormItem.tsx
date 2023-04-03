@@ -41,11 +41,9 @@ export const FormItem: FC<FormItemProps> = ({
       <h3 className="product__title">{title}</h3>
       <p className="product__desc">{description}</p>
       <div className="price-wrapper">
-        {stock.includes('yes') ? (
-          <span className="product__delivery">We can deliver</span>
-        ) : (
-          <span className="product__delivery">Pre-order</span>
-        )}
+        <span className="product__delivery">
+          {stock.includes('yes') ? 'We can deliver' : 'Pre-order'}
+        </span>
         <span className="product__new-price">{price}$</span>
       </div>
 

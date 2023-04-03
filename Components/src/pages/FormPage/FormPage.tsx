@@ -4,7 +4,7 @@ import { FormItemProps } from '@/utils/interfaces';
 import './style.scss';
 
 export const FormPage: FC = () => {
-  const [items, setItems] = useState<[] | Array<FormItemProps>>([]);
+  const [items, setItems] = useState<Array<FormItemProps>>([]);
 
   const addItem = (item: FormItemProps): void => {
     setItems([...items, item]);
