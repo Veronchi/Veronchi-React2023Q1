@@ -1,6 +1,5 @@
 import { FC } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import logo from '@/assets/icons/Logo.svg';
 import { Paths } from '@/utils/enums';
 import { HeaderClasses } from '@/utils/enums';
 import './style.scss';
