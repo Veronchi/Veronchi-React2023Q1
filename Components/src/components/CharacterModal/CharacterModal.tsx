@@ -8,14 +8,14 @@ interface CharacterModalProps {
 }
 
 export const CharacterModal: FC<CharacterModalProps> = ({ data, setModalData }) => {
-  const { name, image, gender, location, species, status, type, episode } = data;
+  const { name, image, gender, location, species, status, type, episode, origin } = data;
 
   const episodeArr = episode.map((i) => i.slice(i.lastIndexOf('/') + 1));
 
   return (
     <>
       <div className="bg" onClick={() => setModalData(null)}></div>
-      <div className="character">
+      <div className="character" data-testid="char-modal">
         <button className="close-btn" onClick={() => setModalData(null)}>
           &#10006;
         </button>
@@ -29,7 +29,8 @@ export const CharacterModal: FC<CharacterModalProps> = ({ data, setModalData }) 
             <span>location: {location.name}</span>
             <span>species: {species}</span>
             <span>status: {status}</span>
-            <span>type: {type}</span>
+            <span>{type && `type: ${type}`}</span>
+            <span>{origin.name && `origin: ${origin.name}`}</span>
           </div>
         </div>
         <div className="character__episodes">
