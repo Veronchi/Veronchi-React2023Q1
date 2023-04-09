@@ -9,6 +9,31 @@ export interface Product {
   img: string;
 }
 
+export interface DataInterface {
+  info: {
+    count: number;
+    pages: number;
+    next: string;
+    prev: null | number;
+  };
+  results: Array<Character>;
+}
+
+export interface Character {
+  id: number;
+  name: string;
+  status: string;
+  species: string;
+  type: string;
+  gender: string;
+  origin: string;
+  location: {
+    name: string;
+  };
+  image: string;
+  episode: Array<string>;
+}
+
 export interface FormItemInteface {
   title: string;
   description: string;
