@@ -1,12 +1,29 @@
-import { FC } from 'react';
+import { Dispatch, FC, SetStateAction } from 'react';
 import { Card } from '../index';
-import { products } from '@/utils/mockData';
+import { Character } from '@/utils/interfaces';
+import { fetchCharacter } from '@/services';
 import './style.scss';
 
-export const CardList: FC = () => (
-  <ul className="products" data-testid="products-list">
-    {products.map((item) => (
-      <Card key={item.id} {...item} />
-    ))}
-  </ul>
-);
+interface CardListProps {
+  isFail: boolean;
+  characters: Character[];
+  setModalData: Dispatch<SetStateAction<Character | null>>;
+}
+
+export const CardList: FC<CardListProps> = ({ isFail, characters, setModalData }) => {
+  const handleClick = async (id: number) => {
+    const data = await fetchCharacter(id);
+
+    setModalData(data);
+  };
+
+  if (isFail) return <h3 className="fail-text">Nothing found</h3>;
+
+  return (
+    <ul className="products" data-testid="products-list">
+      {characters.map((item) => (
+        <Card key={item.id} character={{ ...item }} handleClick={handleClick} />
+      ))}
+    </ul>
+  );
+};
