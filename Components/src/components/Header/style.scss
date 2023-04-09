@@ -7,7 +7,19 @@
   align-items: center;
   gap: 250px;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
-  padding: 10px 56px;
+  padding: 20px 56px;
+
+  &__logo {
+    text-decoration: none;
+  }
+
+  &__title {
+    font-family: 'Delicious Handrawn', cursive;
+    color: $blue;
+    text-decoration: none;
+    text-shadow: 2px 2px 2px $green;
+    margin: 0;
+  }
 
   &__nav {
     display: flex;
@@ -23,12 +35,12 @@
     color: $primary-dark;
 
     &.active {
-      color: $pink;
-      border-bottom: 1px solid $pink;
+      color: $blue;
+      border-bottom: 1px solid $green;
     }
 
     &:hover {
-      color: $pink;
+      color: $blue;
     }
   }
 }
