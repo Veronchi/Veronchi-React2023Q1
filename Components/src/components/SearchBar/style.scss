@@ -4,26 +4,34 @@
   &__input {
     width: 250px;
     line-height: 35px;
-    outline-color: $pink;
-    color: $primary-dark;
-    border: 1px solid $primary-dark;
+    outline-color: $green;
+    color: $blue;
+    border: 1px solid #a8c800;
     border-radius: 5px;
     padding: 0 22px 0 10px;
+    margin-right: 7px;
+
+    &::placeholder {
+      color: $green;
+    }
   }
-}
 
-.input-container {
-  position: relative;
+  &__btn {
+    line-height: 35px;
+    border-radius: 5px;
+    border: 1px solid #a8c800;
+    background-color: transparent;
+    color: $blue;
+    cursor: pointer;
+    margin: 0;
+    padding: 0 20px;
 
-  &::after {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 3px;
-    right: 5px;
-    width: 16px;
-    height: 16px;
-    background-image: url('../../assets/icons/search.svg');
-    background-repeat: no-repeat;
+    &:hover {
+      box-shadow: 0 1px 2px $green;
+    }
+
+    &:active {
+      background-color: $green;
+    }
   }
 }
