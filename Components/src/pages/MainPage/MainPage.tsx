@@ -10,6 +10,19 @@ export const MainPage: FC = () => {
   const [modalData, setModalData] = useState<Character | null>(null);
   const [isInProgress, setIsInProgress] = useState(false);
 
+  const fetchData = async () => {
+    setIsInProgress(true);
+    const data = await fetchAllCharacters();
+    setData(data.results);
+    setIsInProgress(false);
+  };
+
+  const filterData = async (value: string) => {
+    const data = await filterCharacters(value);
+    setData(data.results);
+    setIsInProgress(false);
+  };
+
   const handleSearch = async (el: RefObject<HTMLInputElement>) => {
     setIsInProgress(true);
     try {
@@ -58,18 +71,9 @@ export const MainPage: FC = () => {
     const value = localStorage.getItem('inputValue');
 
     if (!value) {
-      (async (): Promise<void> => {
-        setIsInProgress(true);
-        const data = await fetchAllCharacters();
-        setData(data.results);
-        setIsInProgress(false);
-      })();
+      fetchData();
     } else {
-      (async (): Promise<void> => {
-        const data = await filterCharacters(value);
-        setData(data.results);
-        setIsInProgress(false);
-      })();
+      filterData(value);
     }
   }, []);
 
