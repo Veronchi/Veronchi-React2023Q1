@@ -1,16 +1,30 @@
 import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { vi } from 'vitest';
-import { products } from '@/utils/mockData';
+import { vitest } from 'vitest';
 import { Card } from './Card';
+import { Character } from '@/utils/interfaces';
 
 describe('<Card />', () => {
   let card: HTMLElement;
-  const product = products[0];
+  const testCharacter: Character = {
+    id: 1,
+    name: 'Rick',
+    status: 'Alive',
+    species: 'Human',
+    gender: 'Male',
+    origin: {
+      name: 'Earth (C-137)',
+    },
+    location: {
+      name: 'Citadel of Ricks',
+    },
+    image: 'https://rickandmortyapi.com/api/character/avatar/1.jpeg',
+    episode: ['https://rickandmortyapi.com/api/episode/27'],
+  };
+  const handleClick = vitest.fn();
 
   beforeEach(() => {
-    render(<Card {...product} />);
-    card = screen.getAllByRole('product')[0];
+    render(<Card character={testCharacter} handleClick={handleClick} />);
+    card = screen.getAllByTestId('card')[0];
   });
 
   it('render component', () => {
@@ -18,18 +32,7 @@ describe('<Card />', () => {
   });
 
   it('render card props properly', () => {
-    expect(card).toContainHTML(product.img);
-    expect(card).toContainHTML(product.title);
-    expect(card).toContainHTML(product.description);
-    expect(card).toContainHTML(product.rating);
-    expect(card).toContainHTML(product.newPrice);
-  });
-
-  it('like product', async () => {
-    const user = userEvent.setup();
-    const like = vi.spyOn(user, 'click');
-    const likeButton = screen.getByTestId('like');
-    await user.click(likeButton);
-    expect(like).toHaveBeenCalledTimes(1);
+    expect(card).toContainHTML(testCharacter.image);
+    expect(card).toContainHTML(testCharacter.name);
   });
 });

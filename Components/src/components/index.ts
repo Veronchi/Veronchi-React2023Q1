@@ -8,3 +8,5 @@ export { Form } from './Form/Form';
 export { FormList } from './FormList/FormList';
 export { FormItem } from './FormItem/FormItem';
 export { Modal } from './Modal/Modal';
+export { CharacterModal } from './CharacterModal/CharacterModal';
+export { Spinner } from './Spinner/Spinner';

@@ -1,7 +1,12 @@
-import { FC, RefObject, useEffect, useRef } from 'react';
+import { FC, RefObject, useEffect, useRef, KeyboardEvent } from 'react';
 import './style.scss';
 
-export const SearchBar: FC = () => {
+interface SearchProps {
+  handleSearch: (el: RefObject<HTMLInputElement>) => void;
+  handleKeyDown: (e: KeyboardEvent<HTMLInputElement>, el: RefObject<HTMLInputElement>) => void;
+}
+
+export const SearchBar: FC<SearchProps> = ({ handleSearch, handleKeyDown }) => {
   const inputRef: RefObject<HTMLInputElement> = useRef(null);
 
   useEffect(() => {
@@ -10,17 +15,20 @@ export const SearchBar: FC = () => {
     if (input) {
       input.value = localStorage.getItem('inputValue') || '';
     }
-
-    return () => {
-      localStorage.setItem('inputValue', input?.value || '');
-    };
   }, []);
 
   return (
-    <form className="search">
-      <span className="input-container">
-        <input className="search__input" type="text" placeholder="Search" ref={inputRef} />
-      </span>
-    </form>
+    <div className="search">
+      <input
+        className="search__input"
+        type="text"
+        placeholder="find character"
+        ref={inputRef}
+        onKeyDown={(e) => handleKeyDown(e, inputRef)}
+      />
+      <button className="search__btn" type="button" onClick={() => handleSearch(inputRef)}>
+        Search
+      </button>
+    </div>
   );
 };

@@ -1,43 +1,19 @@
-import { FC, useState } from 'react';
-import { Product } from '@/utils/interfaces';
+import { FC } from 'react';
+import { Character } from '@/utils/interfaces';
 import './style.scss';
 
-export const Card: FC<Product> = ({
-  title,
-  img,
-  rating,
-  description,
-  oldPrice,
-  newPrice,
-  isLiked,
-}) => {
-  const [isLike, setIsLike] = useState(isLiked);
+interface CardProps {
+  character: Character;
+  handleClick: (id: number) => void;
+}
 
-  const handleClick = () => {
-    setIsLike(!isLike);
-  };
+export const Card: FC<CardProps> = ({ character, handleClick }) => {
+  const { id, name, image } = character;
 
   return (
-    <li className="product" role="product">
-      <img className="product__img" src={img} alt="product image" />
-      <div className="info-wrapper">
-        <span className="product__rating">{rating}</span>
-        <button
-          className={isLike ? 'product__like fill' : 'product__like'}
-          data-testid="like"
-          type="button"
-          onClick={handleClick}
-        />
-      </div>
-      <h3 className="product__title">{title}</h3>
-      <p className="product__desc">{description}</p>
-      <div className="price-wrapper">
-        {oldPrice && <span className="product__old-price">{oldPrice}$</span>}
-        <span className="product__new-price">{newPrice}$</span>
-      </div>
-      <button className="product__btn" type="button">
-        Add to cart
-      </button>
+    <li className="card" onClick={() => handleClick(id)} data-testid="card">
+      <img className="card__img" src={image} alt="character image" />
+      <h3 className="card__title">{name}</h3>
     </li>
   );
 };

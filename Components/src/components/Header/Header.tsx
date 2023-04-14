@@ -1,6 +1,5 @@
 import { FC } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import logo from '@/assets/icons/Logo.svg';
 import { Paths } from '@/utils/enums';
 import { HeaderClasses } from '@/utils/enums';
 import './style.scss';
@@ -21,7 +20,7 @@ export const Header: FC = () => {
   return (
     <header className="header">
       <Link to="/" className="header__logo">
-        <img src={logo} alt="logo" />
+        <h1 className="header__title">Rick and Morty</h1>
       </Link>
       <nav className="header__nav">
         <NavLink className={classValue} to={HOME}>
