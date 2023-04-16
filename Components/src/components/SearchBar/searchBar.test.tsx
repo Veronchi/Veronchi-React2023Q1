@@ -2,10 +2,13 @@ import { render, screen } from '@testing-library/react';
 import { spyOn } from '@vitest/spy';
 import { vitest } from 'vitest';
 import { SearchBar } from './SearchBar';
+import { Provider } from 'react-redux';
+import { setupStore } from '@/store/store';
 
 describe('<SearchBar />', () => {
   const getItemSpy = spyOn(Storage.prototype, 'getItem');
   const setItemSpy = spyOn(Storage.prototype, 'setItem');
+  const store = setupStore();
 
   const searchProps = {
     handleSearch: vitest.fn(),
@@ -13,7 +16,11 @@ describe('<SearchBar />', () => {
   };
 
   beforeEach(() => {
-    render(<SearchBar {...searchProps} />);
+    render(
+      <Provider store={store}>
+        <SearchBar {...searchProps} />
+      </Provider>
+    );
   });
 
   it('render search', () => {

@@ -1,13 +1,19 @@
 import { render, screen } from '@testing-library/react';
-import { vitest } from 'vitest';
 import { Form } from './Form';
+import { setupStore } from '@/store/store';
+import { Provider } from 'react-redux';
 
 describe('<Form />', () => {
   let form: HTMLFormElement;
 
   const init = () => {
-    const mockFn = vitest.fn();
-    render(<Form addItem={mockFn} />);
+    const store = setupStore();
+
+    render(
+      <Provider store={store}>
+        <Form />
+      </Provider>
+    );
     form = screen.getByTestId('form');
   };
 

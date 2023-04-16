@@ -1,12 +1,21 @@
-import { render, screen } from '@testing-library/react';
-import { vi } from 'vitest';
-import userEvent from '@testing-library/user-event';
 import App from './App';
+import { vi } from 'vitest';
+import { Provider } from 'react-redux';
+import { setupStore } from '@/store/store';
+import userEvent from '@testing-library/user-event';
+import { render, screen } from '@testing-library/react';
 import { BrowserRouter, MemoryRouter } from 'react-router-dom';
 
 describe('Router', () => {
+  const store = setupStore();
+
   beforeEach(() => {
-    render(<App />, { wrapper: BrowserRouter });
+    render(
+      <Provider store={store}>
+        <App />
+      </Provider>,
+      { wrapper: BrowserRouter }
+    );
   });
 
   it('Click the about router link', async () => {

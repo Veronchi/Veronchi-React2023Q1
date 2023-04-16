@@ -43,12 +43,11 @@ describe('<CardList />', () => {
       ],
     },
   ];
-  const isFail = false;
-  const setModalData = vitest.fn();
+  const handleModal = vitest.fn();
   let productsList: HTMLUListElement;
 
   beforeEach(() => {
-    render(<CardList characters={testArr} isFail={isFail} setModalData={setModalData} />);
+    render(<CardList data={testArr} handleModal={handleModal} />);
     productsList = screen.getByTestId('products-list');
   });
 
