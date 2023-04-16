@@ -1,41 +1,41 @@
 import { Dispatch, FC, SetStateAction } from 'react';
-import { Character } from '@/utils/interfaces';
+import { charactersAPI } from '@/store/service';
 import './style.scss';
 
 interface CharacterModalProps {
-  data: Character;
-  setModalData: Dispatch<SetStateAction<Character | null>>;
+  setCharId: Dispatch<SetStateAction<number | null>>;
+  id: number;
 }
 
-export const CharacterModal: FC<CharacterModalProps> = ({ data, setModalData }) => {
-  const { name, image, gender, location, species, status, type, episode, origin } = data;
+export const CharacterModal: FC<CharacterModalProps> = ({ setCharId, id }) => {
+  const { data } = charactersAPI.useFetchCharacterQuery(id);
 
-  const episodeArr = episode.map((i) => i.slice(i.lastIndexOf('/') + 1));
+  const episodeArr = data && data.episode.map((i) => i.slice(i.lastIndexOf('/') + 1));
 
   return (
     <>
-      <div className="bg" onClick={() => setModalData(null)}></div>
+      <div className="bg" onClick={() => setCharId(null)}></div>
       <div className="character" data-testid="char-modal">
-        <button className="close-btn" onClick={() => setModalData(null)}>
+        <button className="close-btn" onClick={() => setCharId(null)}>
           &#10006;
         </button>
-        <h3 className="character__name">{name}</h3>
+        <h3 className="character__name">{data?.name}</h3>
         <div className="character__info">
           <div className="image-wrapper">
-            <img className="character__img" src={image} alt="character image" />
+            <img className="character__img" src={data?.image} alt="character image" />
           </div>
           <div className="info-wrapper">
-            <span>gender: {gender}</span>
-            <span>location: {location.name}</span>
-            <span>species: {species}</span>
-            <span>status: {status}</span>
-            <span>{type && `type: ${type}`}</span>
-            <span>{origin.name && `origin: ${origin.name}`}</span>
+            <span>gender: {data?.gender}</span>
+            <span>location: {data?.location.name}</span>
+            <span>species: {data?.species}</span>
+            <span>status: {data?.status}</span>
+            {data?.type && <span>{`type: ${data?.type}`}</span>}
+            {data?.origin && <span>{`origin: ${data?.origin.name}`}</span>}
           </div>
         </div>
         <div className="character__episodes">
           <span>episodes: </span>
-          <div>{episodeArr.join(', ')}</div>
+          <div>{episodeArr?.join(', ')}</div>
         </div>
       </div>
     </>
