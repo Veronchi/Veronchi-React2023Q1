@@ -1,11 +1,15 @@
 import { FC, useEffect, useState } from 'react';
-import { FormItemInteface, FormProps } from '@/utils/interfaces';
+import { FormItemInteface } from '@/utils/interfaces';
 import { useForm } from 'react-hook-form';
 import { Modal } from '../index';
+import { useAppDispatch } from '@/hooks/redux';
+import { updateForm } from '@/store/reducers/FormSlice';
 import './style.scss';
 
-export const Form: FC<FormProps> = ({ addItem }) => {
+export const Form: FC = () => {
   const [isSucceed, setisSucceed] = useState(false);
+  const dispatch = useAppDispatch();
+
   const {
     handleSubmit,
     reset,
@@ -32,16 +36,19 @@ export const Form: FC<FormProps> = ({ addItem }) => {
   }: FormItemInteface) => {
     const file = img[0] as Blob;
     const imgFile = URL.createObjectURL(file) as string;
-    addItem({
-      title,
-      description,
-      category,
-      price,
-      collection,
-      radio,
-      stock,
-      image: imgFile,
-    });
+
+    dispatch(
+      updateForm({
+        title,
+        description,
+        category,
+        price,
+        collection,
+        radio,
+        stock,
+        image: imgFile,
+      })
+    );
     setisSucceed(true);
     setTimeout(() => {
       setisSucceed(false);
