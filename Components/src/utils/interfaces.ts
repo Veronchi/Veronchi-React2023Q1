@@ -57,11 +57,6 @@ export interface FormItemProps {
   stock: string;
   image: string;
 }
-
-export interface FormProps {
-  addItem: (item: FormItemProps) => void;
-}
-
 export interface FormListProps {
   items: FormItemProps[];
 }
