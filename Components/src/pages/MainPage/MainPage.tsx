@@ -1,81 +1,38 @@
 import { FC, RefObject, useEffect, useState, KeyboardEvent } from 'react';
 import { CardList, CharacterModal, Spinner, SearchBar } from '@/components';
-import { fetchAllCharacters, filterCharacters } from '@/services';
-import { Character } from '@/utils/interfaces';
+import { useAppDispatch, useAppSelector } from '@/hooks/redux';
+import { charactersAPI } from '@/store/service';
+import { updateSearch } from '@/store/reducers/SearchSlice';
 import './style.scss';
 
 export const MainPage: FC = () => {
-  const [data, setData] = useState<Array<Character>>([]);
-  const [isFail, setIsFail] = useState(false);
-  const [modalData, setModalData] = useState<Character | null>(null);
-  const [isInProgress, setIsInProgress] = useState(false);
+  const dispatch = useAppDispatch();
+  const search = useAppSelector((state) => state.search);
+  const [charId, setCharId] = useState<number | null>(null);
 
-  const fetchData = async () => {
-    setIsInProgress(true);
-    const data = await fetchAllCharacters();
-    setData(data.results);
-    setIsInProgress(false);
+  const { data, isError, isFetching, refetch } = charactersAPI.useFetchAllCharactersQuery(search);
+
+  const handleModal = (id: number) => {
+    setCharId(id);
   };
 
-  const filterData = async (value: string) => {
-    const data = await filterCharacters(value);
-    setData(data.results);
-    setIsInProgress(false);
+  const handleSearch = (el: RefObject<HTMLInputElement>) => {
+    const input = el.current as HTMLInputElement;
+
+    dispatch(updateSearch(input.value));
   };
 
-  const handleSearch = async (el: RefObject<HTMLInputElement>) => {
-    setIsInProgress(true);
-    try {
-      const input = el.current;
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>, el: RefObject<HTMLInputElement>) => {
+    const input = el.current as HTMLInputElement;
 
-      if (input) {
-        const data = await filterCharacters(input.value as string);
-        localStorage.setItem('inputValue', input.value || '');
-        setData(data.results);
-        setIsFail(false);
-        setIsInProgress(false);
-      }
-    } catch (error) {
-      if (error instanceof Error) {
-        (el.current as HTMLInputElement).value = '';
-        localStorage.setItem('inputValue', '');
-        setIsFail(true);
-        setIsInProgress(false);
-      }
-    }
-  };
-
-  const handleKeyDown = async (
-    e: KeyboardEvent<HTMLInputElement>,
-    el: RefObject<HTMLInputElement>
-  ) => {
-    try {
-      if (e.key === 'Enter') {
-        const data = await filterCharacters(el.current?.value as string);
-        localStorage.setItem('inputValue', el.current?.value || '');
-        setData(data.results);
-        setIsFail(false);
-        setIsInProgress(false);
-      }
-    } catch (error) {
-      if (error instanceof Error) {
-        (el.current as HTMLInputElement).value = '';
-        localStorage.setItem('inputValue', '');
-        setIsFail(true);
-        setIsInProgress(false);
-      }
+    if (e.key === 'Enter') {
+      dispatch(updateSearch(input.value));
     }
   };
 
   useEffect(() => {
-    const value = localStorage.getItem('inputValue');
-
-    if (!value) {
-      fetchData();
-    } else {
-      filterData(value);
-    }
-  }, []);
+    refetch();
+  }, [search, refetch]);
 
   return (
     <section className="main">
@@ -83,13 +40,15 @@ export const MainPage: FC = () => {
         <h1 className="main__title">CHARACTERS</h1>
         <SearchBar handleSearch={handleSearch} handleKeyDown={handleKeyDown} />
       </div>
-      {isInProgress ? (
+      {isError ? (
+        <h3 className="fail-text">Nothing found</h3>
+      ) : isFetching ? (
         <Spinner />
       ) : (
-        <CardList isFail={isFail} characters={data} setModalData={setModalData} />
+        <CardList data={data?.results} handleModal={handleModal} />
       )}
 
-      {modalData && <CharacterModal data={modalData} setModalData={setModalData} />}
+      {charId && <CharacterModal id={charId} setCharId={setCharId} />}
     </section>
   );
 };
