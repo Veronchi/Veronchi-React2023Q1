@@ -1,4 +1,5 @@
 import { FC, RefObject, useEffect, useRef, KeyboardEvent } from 'react';
+import { useAppSelector } from '@/hooks/redux';
 import './style.scss';
 
 interface SearchProps {
@@ -8,14 +9,15 @@ interface SearchProps {
 
 export const SearchBar: FC<SearchProps> = ({ handleSearch, handleKeyDown }) => {
   const inputRef: RefObject<HTMLInputElement> = useRef(null);
+  const search = useAppSelector((state) => state.search);
 
   useEffect(() => {
     const input = inputRef.current;
 
     if (input) {
-      input.value = localStorage.getItem('inputValue') || '';
+      input.value = search;
     }
-  }, []);
+  }, [search]);
 
   return (
     <div className="search">
