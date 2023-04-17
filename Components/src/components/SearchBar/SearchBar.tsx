@@ -17,7 +17,7 @@ export const SearchBar: FC<SearchProps> = ({ handleSearch, handleKeyDown }) => {
     if (input) {
       input.value = search;
     }
-  }, []);
+  }, [search]);
 
   return (
     <div className="search">
