@@ -24,15 +24,16 @@ async function initServer() {
       const transformHtml = await vite.transformIndexHtml(url, template);
       const [start, end] = transformHtml.split('<!--app-->');
 
-      const appRender = (await vite.ssrLoadModule('./src/entry-server.tsx')).render;
+      const { render } = await vite.ssrLoadModule('./src/entry-server.tsx');
 
       res.write(start);
-      const stream = appRender(url, {
+      const { stream, preloadedState } = await render(url, {
         onShellReady() {
           stream.pipe(res);
         },
         onAllReady() {
-          res.write(end);
+          const apiData = end.replace('<!--data-->', preloadedState());
+          res.write(apiData);
           res.end();
         },
         onError: (err: Error) => {
