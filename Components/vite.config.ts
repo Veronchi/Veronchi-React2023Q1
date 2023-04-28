@@ -26,7 +26,6 @@ export default defineConfig({
     coverage: {
       exclude: [
         ...configDefaults.coverage.exclude,
-        'src/main.tsx',
         'src/utils/interfaces.ts',
         'src/pages/index.ts',
       ],
