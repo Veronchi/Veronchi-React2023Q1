@@ -27,6 +27,7 @@ export const SearchBar: FC<SearchProps> = ({ handleSearch, handleKeyDown }) => {
         placeholder="find character"
         ref={inputRef}
         onKeyDown={(e) => handleKeyDown(e, inputRef)}
+        data-cy="search__input"
       />
       <button className="search__btn" type="button" onClick={() => handleSearch(inputRef)}>
         Search

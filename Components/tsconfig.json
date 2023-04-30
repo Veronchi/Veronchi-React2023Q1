@@ -18,7 +18,7 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "baseUrl": ".",
-    "types": ["node"],
+    "types": ["cypress", "node"],
     "paths": {
       "@/*": ["./src/*", "./dist/*", ""],
       "pages/*": ["src/pages/*"],
@@ -33,5 +33,6 @@
     {
       "path": "./tsconfig.node.json"
     }
-  ]
+  ],
+  "ts-node": { "esm": true, "experimentalSpecifierResolution": "node" }
 }
