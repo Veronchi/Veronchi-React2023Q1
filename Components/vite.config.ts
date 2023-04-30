@@ -3,6 +3,7 @@
 
 import { defineConfig } from 'vite';
 import { configDefaults } from 'vitest/config';
+import istanbul from 'vite-plugin-istanbul';
 import path from 'path';
 
 import react from '@vitejs/plugin-react';
@@ -15,9 +16,17 @@ export default defineConfig({
       pages: path.resolve(__dirname, './src/pages'),
     },
   },
-  plugins: [react()],
+  plugins: [
+    react(),
+    istanbul({
+      cypress: true,
+      requireEnv: false,
+    }),
+  ],
   server: {
+    port: 3001,
     open: './',
+    watch: { ignored: '**/coverage/**' },
   },
   test: {
     globals: true,
