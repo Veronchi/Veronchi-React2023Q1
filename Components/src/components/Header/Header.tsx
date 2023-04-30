@@ -22,7 +22,7 @@ export const Header: FC = () => {
       <Link to={DEFAULT} className="header__logo">
         <h1 className="header__title">Rick and Morty</h1>
       </Link>
-      <nav className="header__nav">
+      <nav className="header__nav" data-cy="header__nav">
         <NavLink className={classValue} to={DEFAULT}>
           Home
         </NavLink>
