@@ -37,6 +37,8 @@ export default defineConfig({
         ...configDefaults.coverage.exclude,
         'src/utils/interfaces.ts',
         'src/pages/index.ts',
+        'src/entry-client.tsx',
+        'src/entry-server.tsx',
       ],
       all: true,
       src: ['src'],
