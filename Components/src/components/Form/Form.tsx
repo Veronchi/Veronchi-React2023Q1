@@ -74,11 +74,12 @@ export const Form: FC = () => {
                 })}
                 name="category"
                 className="form__input form__input_select"
+                data-cy="category"
               >
                 <option defaultValue="" hidden>
                   Select category
                 </option>
-                <option value="Sweater">Sweaters</option>
+                <option value="Sweaters">Sweaters</option>
                 <option value="Jeans">Jeans</option>
                 <option value="Top">Top</option>
                 <option value="Scarf">Scarf</option>
@@ -100,6 +101,7 @@ export const Form: FC = () => {
                 name="collection"
                 defaultValue=""
                 className="form__input"
+                data-cy="collection"
               />
             </label>
             <span className="error-message error-message_middle">
@@ -123,6 +125,7 @@ export const Form: FC = () => {
                 name="title"
                 className="form__input"
                 defaultValue=""
+                data-cy="title"
               />
             </label>
             <span className="error-message">
@@ -149,6 +152,7 @@ export const Form: FC = () => {
                 name="price"
                 inputMode="numeric"
                 defaultValue=""
+                data-cy="price"
               />
             </label>
             <span className="error-message">
@@ -174,6 +178,7 @@ export const Form: FC = () => {
             name="description"
             defaultValue=""
             className="form__input form__input_area"
+            data-cy="description"
           />
           <span className="error-message error-message_desc">
             {errors.description &&
@@ -197,6 +202,7 @@ export const Form: FC = () => {
               defaultChecked={false}
               id="yes"
               className="form__input_radio"
+              data-cy="favorite"
             />
             <label htmlFor="yes">Yes</label>
             <input
@@ -232,6 +238,7 @@ export const Form: FC = () => {
                 defaultChecked={false}
                 value="no"
                 name="stock"
+                data-cy="stock"
               />{' '}
               No
             </label>
@@ -241,7 +248,7 @@ export const Form: FC = () => {
           </div>
         </div>
         <div className="form__wrapper form__wrapper_file">
-          <label className="file-label" htmlFor="img">
+          <label className="file-label" htmlFor="img" data-cy="file">
             Click me to upload image
           </label>
           <input
@@ -270,7 +277,7 @@ export const Form: FC = () => {
             {errors.img && errors.img.type === 'moreThan1MB' && errors.img.message}
           </span>
         </div>
-        <input className="form__submit" type="submit" />
+        <input className="form__submit" type="submit" data-cy="submit" />
       </form>
       {isSucceed && <Modal />}
     </div>

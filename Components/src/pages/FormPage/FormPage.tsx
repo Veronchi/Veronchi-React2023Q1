@@ -8,7 +8,7 @@ export const FormPage: FC = () => {
 
   return (
     <section className="form-page" data-testid="form-page">
-      <h1 className="form-page__title">Form Page</h1>
+      <h2 className="form-page__title">Form Page</h2>
       <Form />
       <FormList items={cards} />
     </section>
